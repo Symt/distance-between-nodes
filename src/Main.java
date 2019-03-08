@@ -16,15 +16,16 @@ public class Main extends JFrame {
 
 	Main(String title) {
 		super(title);
-		int start;
-		int end;
-		tree.addNode((start = random(0, 100)));
 		tree.addNode(random(0, 100));
 		tree.addNode(random(0, 100));
 		tree.addNode(random(0, 100));
 		tree.addNode(random(0, 100));
 		tree.addNode(random(0, 100));
-		tree.addNode((end = random(0, 100)));
+		tree.addNode(random(0, 100));
+		tree.addNode(random(0, 100));
+		System.out.println(tree.root.data);
+		System.out.println(tree.root.left.data);
+		System.out.println(tree.root.right.data);
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		setVisible(true);
