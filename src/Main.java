@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.concurrent.ThreadLocalRandom;
@@ -9,23 +8,21 @@ import javax.swing.JFrame;
 
 public class Main extends JFrame {
 	BinaryTree tree = new BinaryTree();
-
+	
 	public static void main(String[] args) {
 		new Main("GUI");
 	}
 
 	Main(String title) {
 		super(title);
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		tree.addNode(random(0, 100));
-		System.out.println(tree.root.data);
-		System.out.println(tree.root.left.data);
-		System.out.println(tree.root.right.data);
+		tree.addNode(6);
+		tree.addNode(4);
+		tree.addNode(8);
+		tree.addNode(3);
+		tree.addNode(5);
+		tree.addNode(7);
+		tree.addNode(9);
+		tree.distanceBetween(98, 23);
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -26,48 +26,59 @@ public class BinaryTree {
 	public void distanceBetween(int a, int b) {
 		String pathToA = "", pathToB = "";
 		pathToA = search(root, a, "");
+		if (!found) {
+			System.out.println(a + ", " + b + ": combo does not exist");
+			return;
+		}
 		found = false;
 		pathToB = search(root, b, "");
+		if (!found) {
+			System.out.println(a + ", " + b + ": combo does not exist");
+			return;
+		}
 		found = false;
+		System.out.println(pathToA + " - " + pathToB);
 		int min = Math.min(pathToA.length(), pathToB.length()); // could be bad
 		for (int i = 0; i < min; i++) {
-			if (pathToA.charAt(0) == pathToB.charAt(0)) { // bad
-				pathToA = pathToA.substring(1);			  // bad
-				pathToB = pathToB.substring(1);		      // bad
+			if (pathToA.charAt(0) == pathToB.charAt(0)) {
+				pathToA = pathToA.substring(1);
+				pathToB = pathToB.substring(1);
 			} else {
 				break;
 			}
 		}
 		int length = pathToA.length() + pathToB.length();
-		length = (pathToA.length() == 0 || pathToB.length() == 0) ? length : length + 1; // bad
 		System.out.println("The distance between " + a + " and " + b + " is " + length);
 	}
 
 	boolean found = false;
 
-	private String search(BinaryNode node, int search, String path) { // Definitely bad
-		System.out.println(path);
+	private String search(BinaryNode node, int target, String path) {
 		if (node != null) {
-			if (node.data == search) {
+			if (node.data == target) {
 				found = true;
 				return path;
-			}
-			path = search(node.left, search, path + "L");
-			if (found == true) {
-				return path;
-			} else if (path.length() > 1) {
-				path = path.substring(0, path.length() - 1);
-			}
-			path = search(node.right, search, path + "R");
-			if (found == true) {
-				return path;
-			} else if (path.length() > 1) {
-				path = path.substring(0, path.length() - 1);
+			}  else {
+				if (node.left != null) {
+					path = search(node.left, target, path + "L");
+					if (found) {
+						return path;
+					} else {
+						path = path.substring(0, path.length() - 1);
+					}
+				}
+				if (node.right != null) {
+					path = search(node.right, target, path + "R");
+					if (found) {
+						return path;
+					} else {
+						path = path.substring(0, path.length() - 1);
+					}
+				}
 			}
 		}
 		return path;
 	}
-
 }
 
 class BinaryNode {
