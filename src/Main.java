@@ -25,11 +25,11 @@ public class Main extends JFrame {
 		tree.addNode(5);
 		tree.addNode(7);
 		tree.addNode(9);
-		tree.distanceBetween(5, 3);
+		tree.distanceBetween(3, 8);
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		add(new Panel());
-		setVisible(true);
+		//setVisible(true);
 		setBackground(Color.white);
 	}
 

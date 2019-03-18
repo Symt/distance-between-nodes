@@ -24,29 +24,14 @@ public class BinaryTree {
 	}
 
 	public void distanceBetween(int a, int b) {
-		BinaryNode starta, startb;
-		if (a > root.data) {
-			starta = root.right;
-		} else if (a < root.data){
-			starta = root.left;
-		} else {
-			starta = root;
-		}
-		if (b > root.data) {
-			startb = root.right;
-		} else if (b < root.data) {
-			startb = root.left;
-		} else {
-			startb = root;
-		}
 		String pathToA = "", pathToB = "";
-		pathToA = search(starta, a, "");
+		pathToA = search(root, a, "");
 		if (!found) {
 			System.out.println(a + ", " + b + ": combo does not exist");
 			return;
 		}
 		found = false;
-		pathToB = search(startb, b, "");
+		pathToB = search(root, b, "");
 		if (!found) {
 			System.out.println(a + ", " + b + ": combo does not exist");
 			return;
@@ -67,7 +52,8 @@ public class BinaryTree {
 
 	boolean found = false;
 
-	private String search(BinaryNode node, int target, String path) { // very good
+	private String search(BinaryNode node, int target, String path) { 
+		// very good
 		if (node != null) {
 			if (node.data == target) {
 				found = true;
